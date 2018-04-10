@@ -1,0 +1,9 @@
+[diff]
+	tool = opendiff
+[difftool]
+	prompt = false
+[merge]
+	tool = opendiff
+[user]
+	name = Wayne Hunsley
+	email = whunsley@gmail.com

@@ -7,3 +7,7 @@
 [user]
 	name = Wayne Hunsley
 	email = whunsley@gmail.com
+
+# Allow local customizations in the .gitconfig_local file
+[include]
+	path = ~/.gitconfig_local

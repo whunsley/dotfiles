@@ -12,4 +12,5 @@
     ~/.gitconfig:
     ~/.gitignore_global:
     ~/.shell:
+    ~/.vim:
     ~/.vimrc:

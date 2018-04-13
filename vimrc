@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdcommenter'
 
 function! BuildYCM(info)
   " info is a dictionary with 3 fields

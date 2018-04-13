@@ -115,6 +115,9 @@ endif
 map <C-a> <Nop>
 map <C-x> <Nop>
 
+" avoid the ESC key
+imap jj <Esc>
+
 " disable audible bell
 set noerrorbells visualbell t_vb=
 

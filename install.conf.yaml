@@ -12,5 +12,6 @@
     ~/.gitconfig:
     ~/.gitignore_global:
     ~/.shell:
+    ~/.tmux.conf:
     ~/.vim:
     ~/.vimrc:

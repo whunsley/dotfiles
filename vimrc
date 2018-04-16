@@ -1,5 +1,9 @@
 set nocompatible " not vi compatible
 
+source ~/.vim/startup/functions.vim " User defined functions
+
+let g:platform = GetPlatform()
+
 "--------------
 " Load pathogen
 "--------------

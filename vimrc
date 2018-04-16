@@ -9,17 +9,21 @@ Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdcommenter'
 
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !./install.py
-  endif
-endfunction
+" Linux-Only plug-ins
+if g:platform != "AIX"
+    function! BuildYCM(info)
+        " info is a dictionary with 3 fields
+        " - name:   name of the plugin
+        " - status: 'installed', 'updated', or 'unchanged'
+        " - force:  set on PlugInstall! or PlugUpdate!
+        if a:info.status == 'installed' || a:info.force
+            !./install.py
+        endif
+    endfunction
 
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+endif
+
 call plug#end()
 
 " nerdtree config

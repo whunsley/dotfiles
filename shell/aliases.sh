@@ -6,14 +6,18 @@ else # OS X `ls`
 fi
 
 # List all files colorized in long format
-alias ll='ls -lh'
+alias ll='ls -alF'
 
 # List all files colorized in long format, including dot files
-alias la="ls -lha"
+alias la='ls -A'
 
 # List only directories
 alias lsd='ls -l | grep "^d"'
 
+# some more ls aliases
+alias l='ls -CF'
+
+# shorten dotnet core command line.
 alias dn='dotnet'
 
 # Always use color output for `ls`

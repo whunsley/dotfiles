@@ -12,6 +12,7 @@ Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdcommenter'
+Plug 'mileszs/ack.vim'
 
 " Linux-Only plug-ins
 if g:platform != "AIX"
@@ -30,6 +31,10 @@ endif
 
 call plug#end()
 
+"------------------
+" Plugin config
+"------------------
+
 " nerdtree config
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -37,9 +42,18 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-map <C-n> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" ack.vim config
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" ack.vim do not jump to first result
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
 "------------------
 " Syntax and indent
@@ -56,7 +70,7 @@ augroup END
 
 " vim can autodetect this based on $TERM (e.g. 'xterm-256color')
 " but it can be set to force 256 colors
-" set t_Co=256
+set t_Co=256
 if has('gui_running')
     colorscheme solarized
     let g:lightline = {'colorscheme': 'solarized'}

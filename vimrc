@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Linux-Only plug-ins
 if g:platform != "AIX"
@@ -54,6 +55,9 @@ endif
 " ack.vim do not jump to first result
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+
+" ctrlp.vim config
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 "------------------
 " Syntax and indent

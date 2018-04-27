@@ -2,64 +2,9 @@ set nocompatible " not vi compatible
 
 source ~/.vim/startup/functions.vim " User defined functions
 source ~/.vim/startup/settings.vim
+source ~/.vim/startup/plugins.vim
 
 let g:platform = GetPlatform()
-
-"--------------
-" Load pathogen
-"--------------
-call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-sensible'
-Plug 'scrooloose/nerdtree'
-Plug 'altercation/vim-colors-solarized'
-Plug 'scrooloose/nerdcommenter'
-Plug 'mileszs/ack.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'jlanzarotta/bufexplorer'
-
-" Linux-Only plug-ins
-if g:platform != "AIX"
-    function! BuildYCM(info)
-        " info is a dictionary with 3 fields
-        " - name:   name of the plugin
-        " - status: 'installed', 'updated', or 'unchanged'
-        " - force:  set on PlugInstall! or PlugUpdate!
-        if a:info.status == 'installed' || a:info.force
-            !./install.py
-        endif
-    endfunction
-
-    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-endif
-
-call plug#end()
-
-"------------------
-" Plugin config
-"------------------
-
-" nerdtree config
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-map <C-n> :NERDTreeToggle<CR>
-
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" ack.vim config
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
-" ack.vim do not jump to first result
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
-
-" ctrlp.vim config
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 "------------------
 " Syntax and indent

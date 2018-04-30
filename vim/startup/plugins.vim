@@ -56,4 +56,10 @@ if g:platform != "AIX"
     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 endif
 
+" Airline for pretty status/tab lines
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#hunks#non_zero_only = 1 " git gutter
+
 call plug#end()

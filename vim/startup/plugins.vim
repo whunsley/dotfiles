@@ -2,6 +2,8 @@ set nocompatible " not vi compatible
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-fugitive'
+
 Plug 'tpope/vim-sensible'
 
 Plug 'scrooloose/nerdtree'
@@ -16,6 +18,8 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 map <C-n> :NERDTreeToggle<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let NERDTreeIgnore = ['\.d$', '\.o$']
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdcommenter'

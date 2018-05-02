@@ -53,7 +53,7 @@ if g:platform != "AIX"
         endif
     endfunction
 
-    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+    Plug 'Valloric/YouCompleteMe'
 endif
 
 " Airline for pretty status/tab lines
@@ -61,5 +61,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1 " git gutter
+
+" Add support to switch between cpp/h files
+Plug 'vim-scripts/a.vim'
+
+map <F4> :A<CR>
+map <F5> :AV<CR>
+
+" Highlights whitespace 
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()

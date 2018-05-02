@@ -118,3 +118,5 @@
         autosetupmerge = always
         autosetuprebase = always
 
+[init]
+	templatedir = ~/.git_template

@@ -54,7 +54,7 @@
 	upgrade-submodules = submodule update --init --remote
 	empty-tree-hash = hash-object -t tree /dev/null
 	root = rev-parse --show-toplevel
-	ctags = ! "ctg() { trap \"rm -f .git/tags.$$\" EXIT; ctags --tag-relative -Rf.git/tags.$$ --exclude=.git; mv .git/tags.$$ .git/tags; }; ctg"
+	ctags = !.git/hooks/ctags
 	tar = ! "tar() { git archive --format tar --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; tar"
 	targz = ! "targz() { git archive --format tar.gz --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; targz"
 	zip = ! "zip() { git archive --format zip --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; zip"
@@ -83,13 +83,17 @@
 
 [merge]
 	defaultToUpstream = true
-	tool = vimdiff
+	tool = fugitive
 
 [pull]
 	ff = only
+        rebase = true
 
 [mergetool]
 	keepBackup = false
+
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
 
 [push]
 	default = upstream

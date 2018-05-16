@@ -12,7 +12,6 @@
     ~/.gitconfig:
     ~/.gitignore_global:
     ~/.git_template:
-    ~/.luacheckrc:
     ~/.shell:
     ~/.tmux.conf:
     ~/.vim:

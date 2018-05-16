@@ -50,6 +50,7 @@ endif
 
 "" using the mouse
 set mouse+=a " enable mouse mode (scrolling, selection, etc)
+set mouse+=r " enable mouse mode (scrolling, selection, etc)
 if &term =~ '^screen'
     " tmux knows the extended mouse mode
     set ttymouse=xterm2
@@ -96,6 +97,9 @@ set cinkeys-=0#
 set cinoptions=:s,ps,ts,cs
 set cinwords=if,else,while,do
 set cinwords+=for,switch,case
+
+" for lua files indent is set to 3 spaces
+autocmd Filetype lua setlocal ts=3 sw=3 expandtab
 
 "" folding
 set nofoldenable

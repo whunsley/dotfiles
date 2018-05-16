@@ -65,10 +65,24 @@ let g:airline#extensions#hunks#non_zero_only = 1 " git gutter
 " Add support to switch between cpp/h files
 Plug 'vim-scripts/a.vim'
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_lua_checkers = ["luac", "luacheck"]
+let g:syntastic_lua_luacheck_args = "--no-unused-args --config=$HOME/.luacheckrc"
+
 map <F4> :A<CR>
 map <F5> :AV<CR>
 
 " Highlights whitespace 
 Plug 'ntpeters/vim-better-whitespace'
+
+" Syntastic plug-in for linting lua
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()

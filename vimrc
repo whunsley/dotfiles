@@ -6,6 +6,8 @@ source ~/.vim/startup/plugins.vim
 
 let g:platform = GetPlatform()
 
+let mapleader = "`"
+
 "------------------
 " Syntax and indent
 "------------------
@@ -28,6 +30,7 @@ elseif &t_Co < 256
     colorscheme default
     set nocursorline " looks bad in this mode
 else
+    " let g:solarized_termcolors=256 " instead of 16 color with mapping in terminal
     set background=dark
     colorscheme solarized
     " customized colors

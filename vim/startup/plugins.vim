@@ -1,5 +1,11 @@
 set nocompatible " not vi compatible
 
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
@@ -42,19 +48,19 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 Plug 'jlanzarotta/bufexplorer'
 
 " Linux-Only plug-ins
-if g:platform != "AIX"
-    function! BuildYCM(info)
-        " info is a dictionary with 3 fields
-        " - name:   name of the plugin
-        " - status: 'installed', 'updated', or 'unchanged'
-        " - force:  set on PlugInstall! or PlugUpdate!
-        if a:info.status == 'installed' || a:info.force
-            !./install.py
-        endif
-    endfunction
-
-    Plug 'Valloric/YouCompleteMe'
-endif
+" if g:platform != "AIX"
+"     function! BuildYCM(info)
+"         " info is a dictionary with 3 fields
+"         " - name:   name of the plugin
+"         " - status: 'installed', 'updated', or 'unchanged'
+"         " - force:  set on PlugInstall! or PlugUpdate!
+"         if a:info.status == 'installed' || a:info.force
+"             !./install.py
+"         endif
+"     endfunction
+" 
+"     Plug 'Valloric/YouCompleteMe'
+" endif
 
 " Airline for pretty status/tab lines
 Plug 'vim-airline/vim-airline'
@@ -69,13 +75,13 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_lua_checkers = ["luac", "luacheck"]
-let g:syntastic_lua_luacheck_args = "--no-unused-args --config=$HOME/.luacheckrc"
-
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_lua_checkers = ["luac", "luacheck"]
+" let g:syntastic_lua_luacheck_args = "--no-unused-args --config=$HOME/.luacheckrc"
+" 
 map <F4> :A<CR>
 map <F5> :AV<CR>
 
@@ -83,6 +89,6 @@ map <F5> :AV<CR>
 Plug 'ntpeters/vim-better-whitespace'
 
 " Syntastic plug-in for linting lua
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 
 call plug#end()

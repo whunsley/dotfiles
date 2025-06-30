@@ -15,7 +15,8 @@ source ~/.bash/settings.bash
 source ~/.shell/aliases.sh
 
 # Custom prompt
-source ~/.bash/prompt.bash
+# [ -n "$PS1" ] && source ~/.bash/prompt.bash;
+eval "$(starship init bash)"
 
 # Allow local customizations in the ~/.shell_local_after file
 if [ -f ~/.shell_local_after ]; then
@@ -26,3 +27,4 @@ fi
 if [ -f ~/.bashrc_local_after ]; then
     source ~/.bashrc_local_after
 fi
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

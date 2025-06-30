@@ -9,6 +9,9 @@
     ~/.bash:
     ~/.bash_profile:
     ~/.bashrc:
+    ~/.config/starship.toml:
+      create: true
+      path: starship.toml
     ~/.gitconfig:
     ~/.gitignore_global:
     ~/.git_template:
